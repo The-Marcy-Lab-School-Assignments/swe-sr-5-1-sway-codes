@@ -11,7 +11,36 @@ Imagine you are teaching a friend about OOP. They mainly want to understand what
 - Give an example (in code) of encapsulation.
 - An explanation of how the code example demonstrates encapsulation
 
-### Response 1
+### Response 1 (Jordi)
+
+In programming encapsulation is a programming practice which involves creating a unit of code that bundles functions together with the data that they operate on.
+Encapsulation accomplishes a major goal in software engineering which is that it provides an interface to our data. By using encapsulation you are able to create functions that act as interfaces to interact with your data. This not only makes your code more organized but also readable.
+Here is an example of encapsulation
+
+```js
+// The outer (encapsulating object)
+const petManager = {
+  // The data that our functions operate on
+  petNames: [],
+  // Inner functions (interfaces for data)
+  addPet(name) {
+    this.petNames.push(name);
+  },
+  getPets() {
+    console.log(this.petNames);
+  },
+};
+petManager.addPet("Max");
+petManager.addPet("Hachi");
+petManager.getPets(); // [ 'Max', 'Hachi' ]
+```
+
+Let's break down the code above:
+
+- **Outer Object (Encapsulating Object):** This would be considered our unit of code which bundles together the `petNames` array (data) and the `addPet` and `getPets` functions.
+- **Data:** Within our `petManager` object the data that we want to manipulate later on needs to be clearly defined inside our outer object.
+- **Functions (Data Interfaces):** These functions will directly interact with our data. In the example above two pets are added to the `petNames` array by calling the `addPet` function, then the `getPets` function is called to log the list of pets.
+  The code above demonstrates how powerful encapsulation can be when you want to simplify the process of manipulating data. In the case above the `petManager` object includes all of the necessary functions to update and interact with our data in this case the `petNames` array making our code readable, easily understandable, and maintainable.
 
 ## Prompt 2
 
@@ -34,7 +63,36 @@ friendsManager.friends.push(42);
 
 Explain how the code is not consistent or predictable, then provide an example in code that uses closure to make it more consistent and predictable.
 
-### Response 2
+### Response 2 (Jordi)
+
+In programming encapsulation is a programming practice which involves creating a unit of code that bundles functions together with the data that they operate on.
+Encapsulation accomplishes a major goal in software engineering which is that it provides an interface to our data. By using encapsulation you are able to create functions that act as interfaces to interact with your data. This not only makes your code more organized but also readable.
+Here is an example of encapsulation
+
+```js
+// The outer (encapsulating object)
+const petManager = {
+  // The data that our functions operate on
+  petNames: [],
+  // Inner functions (interfaces for data)
+  addPet(name) {
+    this.petNames.push(name);
+  },
+  getPets() {
+    console.log(this.petNames);
+  },
+};
+petManager.addPet("Max");
+petManager.addPet("Hachi");
+petManager.getPets(); // [ 'Max', 'Hachi' ]
+```
+
+Let's break down the code above:
+
+- **Outer Object (Encapsulating Object):** This would be considered our unit of code which bundles together the `petNames` array (data) and the `addPet` and `getPets` functions.
+- **Data:** Within our `petManager` object the data that we want to manipulate later on needs to be clearly defined inside our outer object.
+- **Functions (Data Interfaces):** These functions will directly interact with our data. In the example above two pets are added to the `petNames` array by calling the `addPet` function, then the `getPets` function is called to log the list of pets.
+  The code above demonstrates how powerful encapsulation can be when you want to simplify the process of manipulating data. In the case above the `petManager` object includes all of the necessary functions to update and interact with our data in this case the `petNames` array making our code readable, easily understandable, and maintainable.
 
 ## Prompt 3
 
@@ -51,7 +109,7 @@ Do some research on the history of when / how classes were introduced into JavaS
 - What version of JavaScript were classes introduced in and when did it come out?
 - Why were classes introduced into JavaScript?
 
-### Response 4
+### Response 4 (Josue)
 
 Classes were introduced in ECMAScript 2015 (ES6), which was released in June 2015. JavaScript already had prototype-based inheritance, but it was more verbose and unintuitive, especially for developers coming from class-based (OOP) languages like Python or C++. With classes, methods are automatically added to the prototype, reducing memory usage, and there’s no need to manually assign methods inside a constructor, making code easier to read, reuse, and debug. This makes large projects more manageable. The constructor, extends, and super keywords made it simpler to create and extend objects with clear relationships, providing syntactic sugar for prototypes. In other words, classes provide a clearer, more intuitive syntax for creating and extending objects.
 
@@ -102,7 +160,7 @@ console.log(alice.greet());
 
 Provide one point that advocates for the use of this syntax and then provide a counter-argument for the use of classes instead.
 
-### Response 5
+### Response 5 (Josue)
 
 Using Constructor Functions gives you more control over how objects work, allowing manual setup of inheritance and methods. This can be helpful for small projects or custom setups.
 
