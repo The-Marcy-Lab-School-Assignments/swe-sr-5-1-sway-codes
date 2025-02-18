@@ -65,34 +65,29 @@ Explain how the code is not consistent or predictable, then provide an example i
 
 ### Response 2 (Jordi)
 
-In programming encapsulation is a programming practice which involves creating a unit of code that bundles functions together with the data that they operate on.
-Encapsulation accomplishes a major goal in software engineering which is that it provides an interface to our data. By using encapsulation you are able to create functions that act as interfaces to interact with your data. This not only makes your code more organized but also readable.
-Here is an example of encapsulation
+The `friendsManager` object is not predictable or consistent because its `friends` array can be manipulated directly, essentially bypassing the `addFriend` function that is intended to manage adding friends to the array.. 
+
+For example, in the code above, adding a number to the `friends` array is possible because there is access to the array through the object itself. Even though there is an `addFriend` function that can properly handle different inputs, there's still the option to directly interact with the friends array, which leads to inconsistent behaviors. This means that the `friends` array can be accessed through the object, which makes our code unpredictable and inconsistent because the information is susceptible to unexpected changes.
+
+To prevent direct access to the data within the object, we can use a closure. A closure consists of an outer function that creates our interface, encapsulates the data, and returns the interface object. The key difference with a closure is that instead of putting the data inside of our `friendsManager`  object where it could be directly accessed, it is put within the outer function. In this way, the `friends` array can only be accessed and manipulated through the `friendsManager` interface.
+
+Here's the implementation of a closure for the `friendsManager` object:
 
 ```js
-// The outer (encapsulating object)
-const petManager = {
-  // The data that our functions operate on
-  petNames: [],
-  // Inner functions (interfaces for data)
-  addPet(name) {
-    this.petNames.push(name);
-  },
-  getPets() {
-    console.log(this.petNames);
-  },
-};
-petManager.addPet("Max");
-petManager.addPet("Hachi");
-petManager.getPets(); // [ 'Max', 'Hachi' ]
+// Outer Function (Makes Interface)
+const friendsManagerMaker = () => {
+	// Data is put inside the outer function
+	const friends = [];
+	// Interface is stored as an object in a separate variable and then returned
+	const friendsManager = {
+	 addFriend(newFriend) {
+	   if (typeof newFriend !== 'string') return;
+	   friends.push(newFriend);
+	 }
+	};
+	return friendsManager
+}
 ```
-
-Let's break down the code above:
-
-- **Outer Object (Encapsulating Object):** This would be considered our unit of code which bundles together the `petNames` array (data) and the `addPet` and `getPets` functions.
-- **Data:** Within our `petManager` object the data that we want to manipulate later on needs to be clearly defined inside our outer object.
-- **Functions (Data Interfaces):** These functions will directly interact with our data. In the example above two pets are added to the `petNames` array by calling the `addPet` function, then the `getPets` function is called to log the list of pets.
-  The code above demonstrates how powerful encapsulation can be when you want to simplify the process of manipulating data. In the case above the `petManager` object includes all of the necessary functions to update and interact with our data in this case the `petNames` array making our code readable, easily understandable, and maintainable.
 
 ## Prompt 3
 
